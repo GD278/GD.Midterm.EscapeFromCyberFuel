@@ -2,11 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ScoreTracker : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] Text ScoreTextBox;
+    [SerializeField] Text youWinTextBox;
+    [SerializeField] Text replayTextBox;
+    PlayerController playerController;
+    Timer timer;
+    [SerializeField] GameObject[] rings;
     bool triggered;
     
     
@@ -16,12 +22,26 @@ public class ScoreTracker : MonoBehaviour
     {
         i = 0;
         triggered = false;
+        playerController = GetComponent<PlayerController>();
+        timer = GetComponent<Timer>();
+        replayTextBox.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         triggered = false;
+        if(i >= rings.Length)
+        {
+            youWinTextBox.text = "You Win!";
+            playerController.enabled = false;
+            timer.enabled = false;
+            replayTextBox.enabled = true;
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
