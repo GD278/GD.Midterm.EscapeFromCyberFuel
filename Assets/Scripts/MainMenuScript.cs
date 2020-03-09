@@ -11,9 +11,6 @@ public class MainMenuScript : MonoBehaviour
     [SerializeField] GameObject ControlsPanel;
     public void Start()
     {
-        MainMenuPanel.SetActive(true);
-        CreditsPanel.SetActive(false);
-        ControlsPanel.SetActive(false);
     }
     public void ShowMainMenu()
     {
