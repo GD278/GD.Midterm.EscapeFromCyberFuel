@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
@@ -9,11 +10,13 @@ public class Timer : MonoBehaviour
     [SerializeField] float timer;
     [SerializeField] Text timerTextBox;
     [SerializeField] Text gameOverTextBox;
+    [SerializeField] Text replayTextBox;
     PlayerController playerController;
     bool gameOver;
     
     void Start()
     {
+        replayTextBox.enabled = false;
         gameOver = false;
         playerController = GetComponent<PlayerController>();
     }
@@ -32,7 +35,13 @@ public class Timer : MonoBehaviour
 
         if (gameOver == true)
         {
-            gameOverTextBox.text = " Game Over";
+            replayTextBox.enabled = true;
+            playerController.enabled = false;
+            gameOverTextBox.text = "Game Over";
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
         }
     }
 }
