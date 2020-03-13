@@ -8,10 +8,10 @@ public class ButtonSound : MonoBehaviour
     private AudioSource source;
     [SerializeField] private AudioClip hoverOver;
     [SerializeField] private AudioClip mouseClick;
-    [SerializeField] GameObject camera;
+    [SerializeField] GameObject buttonAudioPlayer;
     void Start()
     {
-        source = camera.GetComponent<AudioSource>();
+        source = buttonAudioPlayer.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -21,10 +21,10 @@ public class ButtonSound : MonoBehaviour
     }
    public void OnMouseEnter()
     {
-        source.PlayOneShot(hoverOver);
+       source.PlayOneShot(hoverOver);
     }
      public void OnMouseDown()
-    {
+    { 
         source.PlayOneShot(mouseClick);
     }
 }
