@@ -7,8 +7,8 @@ public class PlayerController : MonoBehaviour
     //Variables
     [SerializeField] float speed = 5.0f;
     [SerializeField] float turnSpeed;
-    [SerializeField] float torque;
     [SerializeField] float VertSpeed;
+    private Vector3 rotationVelocity;
     Rigidbody playerRB;
     // Start is called before the first frame update
     void Start()
@@ -25,18 +25,27 @@ public class PlayerController : MonoBehaviour
         //Moves player forward
         if (Input.GetKey(KeyCode.W))
         {
-            transform.Translate(Vector3.forward * Time.deltaTime * speed);
+            playerRB.velocity = new Vector3(speed, 0, 0);
+            //use velocity start with velocity at zero and modify based on what they press.
+            //use velocity to move player up as well. 
+        }
+        if (Input.GetKeyUp(KeyCode.W))
+        {
+            playerRB.velocity = Vector3.zero;
         }
         //Moves player backwards
         if (Input.GetKey(KeyCode.S))
         {
-            transform.Translate(Vector3.back * Time.deltaTime * speed);
+            playerRB.velocity = new Vector3(-speed, 0, 0);
+        }
+        if (Input.GetKeyUp(KeyCode.S))
+        {
+            playerRB.velocity = Vector3.zero;
         }
         //Rotates player left
         if (Input.GetKey(KeyCode.A))
         {
-            transform.Rotate(Vector3.up * Time.deltaTime * -turnSpeed, Space.Self);
-           
+            transform.Rotate(Vector3.up * Time.deltaTime * turnSpeed, Space.Self);
         }
         //Rotates player right
         if (Input.GetKey(KeyCode.D))
