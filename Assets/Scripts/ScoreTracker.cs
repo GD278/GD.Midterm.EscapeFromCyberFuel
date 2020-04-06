@@ -52,8 +52,8 @@ public class ScoreTracker : MonoBehaviour
             Destroy(other.gameObject);
             Debug.Log("Hoop destroyed.");
             Debug.Log("You have entered the trigger.");
-            instantiateRings.RingInstantiate();
             i++;
+            instantiateRings.RingInstantiate();
             Debug.Log("Score added.");
             Destroy(other.gameObject);
             Debug.Log("Trigger destroyed.");
