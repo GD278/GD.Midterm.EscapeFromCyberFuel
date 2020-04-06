@@ -5,16 +5,17 @@ using UnityEngine;
 public class LookAtRings : MonoBehaviour
 {
     // Start is called before the first frame update
-    ScoreTracker scoreTracker;
+    [SerializeField] ScoreTracker scoreTracker;
+    private Transform waypoint;
     void Start()
     {
-        scoreTracker = GetComponent<ScoreTracker>();
+        //scoreTracker = GetComponent<ScoreTracker>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 target = scoreTracker.rings[scoreTracker.i].transform.position;
-        transform.LookAt(target);
+        waypoint = scoreTracker.getCurrentRing().transform;
+        transform.LookAt(waypoint);
     }
 }
