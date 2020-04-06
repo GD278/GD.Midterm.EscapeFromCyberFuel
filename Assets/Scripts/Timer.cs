@@ -11,11 +11,14 @@ public class Timer : MonoBehaviour
     [SerializeField] Text timerTextBox;
     [SerializeField] Text gameOverTextBox;
     [SerializeField] Text replayTextBox;
+    bool timeron;
     PlayerController playerController;
     bool gameOver;
-    
+
     void Start()
     {
+        timerTextBox.text = "Press any key to start";
+        timeron = false;
         replayTextBox.enabled = false;
         gameOver = false;
         playerController = GetComponent<PlayerController>();
@@ -24,23 +27,30 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer -= Time.deltaTime;
-        timerTextBox.text = $"{Mathf.Round(timer * 10) /  10f}";
-
-        if(timer <= 0)
+        if (Input.anyKeyDown)
         {
-            timer = 0;
-            gameOver = true;
+            timeron = true;
         }
-
-        if (gameOver == true)
+        if (timeron)
         {
-            replayTextBox.enabled = true;
-            playerController.enabled = false;
-            gameOverTextBox.text = "Game Over";
-            if (Input.GetKeyDown(KeyCode.R))
+            timer -= Time.deltaTime;
+            timerTextBox.text = $"{Mathf.Round(timer * 10) / 10f}";
+
+            if (timer <= 0)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                timer = 0;
+                gameOver = true;
+            }
+
+            if (gameOver == true)
+            {
+                replayTextBox.enabled = true;
+                playerController.enabled = false;
+                gameOverTextBox.text = "Game Over";
+                if (Input.GetKeyDown(KeyCode.R))
+                {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                }
             }
         }
     }
