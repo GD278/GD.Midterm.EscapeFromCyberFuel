@@ -17,7 +17,7 @@ public class Timer : MonoBehaviour
 
     void Start()
     {
-        timerTextBox.text = "Press any key to start";
+        timerTextBox.text = $"{timer}";
         timeron = false;
         replayTextBox.enabled = false;
         gameOver = false;
@@ -36,9 +36,10 @@ public class Timer : MonoBehaviour
             timer -= Time.deltaTime;
             timerTextBox.text = $"{Mathf.Round(timer * 10) / 10f}";
 
-            if (timer <= 0)
+            if(timer <= 0)
             {
                 timer = 0;
+                timerTextBox.text = $"{timer}";
                 gameOver = true;
             }
 
