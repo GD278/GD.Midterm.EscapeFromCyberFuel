@@ -14,7 +14,13 @@ public class InstantiateRings : MonoBehaviour
 
     // Update is called once per frame
     public void RingInstantiate()
-    {
-        scoreTracker.rings[scoreTracker.i].SetActive(true);
+    { 
+
+            scoreTracker.rings[scoreTracker.i].SetActive(true);
+        
+        if(scoreTracker.i == scoreTracker.rings.Length)
+        {
+            Debug.Log("All rings have been spawned.");
+        }
     }
 }
