@@ -26,6 +26,7 @@ public class ScoreTracker : MonoBehaviour
         instantiateRings = GetComponent<InstantiateRings>();
         timer = GetComponent<Timer>();
         replayTextBox.enabled = false;
+        Debug.Log(getCurrentRing());
     }
 
     // Update is called once per frame
@@ -59,5 +60,10 @@ public class ScoreTracker : MonoBehaviour
             Debug.Log("Trigger destroyed.");
             ScoreTextBox.text = $"Score: {i}";
         }
+    }
+
+    public GameObject getCurrentRing()
+    {
+        return rings[i];
     }
 }
