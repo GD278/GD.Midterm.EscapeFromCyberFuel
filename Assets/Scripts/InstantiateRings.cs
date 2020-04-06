@@ -15,6 +15,6 @@ public class InstantiateRings : MonoBehaviour
     // Update is called once per frame
     public void RingInstantiate()
     {
-        GameObject Ring = Instantiate(scoreTracker.rings[i]);
+        scoreTracker.rings[i].SetActive(true);
     }
 }
