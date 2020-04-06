@@ -16,7 +16,7 @@ public class ScoreTracker : MonoBehaviour
     bool triggered;
 
     InstantiateRings instantiateRings;
-    int i;
+    public int i;
     
     void Start()
     {
