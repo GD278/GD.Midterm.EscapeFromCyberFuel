@@ -12,10 +12,10 @@ public class ScoreTracker : MonoBehaviour
     [SerializeField] Text replayTextBox;
     PlayerController playerController;
     Timer timer;
-    [SerializeField] GameObject[] rings;
+    public GameObject[] rings;
     bool triggered;
-    
-    
+
+    InstantiateRings instantiateRings;
     int i;
     
     void Start()
@@ -23,6 +23,7 @@ public class ScoreTracker : MonoBehaviour
         i = 0;
         triggered = false;
         playerController = GetComponent<PlayerController>();
+        instantiateRings = GetComponent<InstantiateRings>();
         timer = GetComponent<Timer>();
         replayTextBox.enabled = false;
     }
@@ -43,7 +44,7 @@ public class ScoreTracker : MonoBehaviour
             }
         }
     }
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Hoop") && !triggered)
         {
@@ -51,6 +52,7 @@ public class ScoreTracker : MonoBehaviour
             Destroy(other.gameObject);
             Debug.Log("Hoop destroyed.");
             Debug.Log("You have entered the trigger.");
+            instantiateRings.RingInstantiate();
             i++;
             Debug.Log("Score added.");
             Destroy(other.gameObject);
