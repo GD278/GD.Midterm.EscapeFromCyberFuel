@@ -6,7 +6,7 @@ public class InstantiateRings : MonoBehaviour
 {
     // Start is called before the first frame update
     ScoreTracker scoreTracker;
-    int i = 0;
+    
     void Start()
     {
         scoreTracker = GetComponent<ScoreTracker>();
@@ -15,6 +15,6 @@ public class InstantiateRings : MonoBehaviour
     // Update is called once per frame
     public void RingInstantiate()
     {
-        scoreTracker.rings[i].SetActive(true);
+        scoreTracker.rings[scoreTracker.i].SetActive(true);
     }
 }
