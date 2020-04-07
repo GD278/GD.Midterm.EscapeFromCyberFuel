@@ -20,7 +20,7 @@ public class MainMenuScript : MonoBehaviour
     }
     public void PlayGame()
     {
-        SceneManager.LoadScene("DevLevel");
+        SceneManager.LoadScene("StartLevel01");
     }
     public void ShowCredits()
     {
