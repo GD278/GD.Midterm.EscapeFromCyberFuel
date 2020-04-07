@@ -66,11 +66,16 @@ public class PlayerController : MonoBehaviour
         {
             playerRB.velocity = Vector3.zero;
         }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
 
         //Detects where player is at in sky. If greater than x player will not be able to move up
-        if(transform.position.y >= 14.0f)
+        if(transform.position.y >= 16.0f)
         {
             playerRB.velocity = Vector3.zero;
         }
+
     }
 }
