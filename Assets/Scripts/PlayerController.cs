@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float speed = 5.0f;
     [SerializeField] float turnSpeed;
     [SerializeField] float VertSpeed;
+    Vector3 inputDir = Vector3.zero;
     private Vector3 rotationVelocity;
     Rigidbody playerRB;
     // Start is called before the first frame update
@@ -19,33 +20,25 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
-        Vector3 forwardMovement = new Vector3(moveHorizontal, 0.0f, moveVertical);
+        //float moveHorizontal = Input.GetAxis("Horizontal");
+        //float moveVertical = Input.GetAxis("Vertical");
         //Moves player forward
         if (Input.GetKey(KeyCode.W))
         {
-            playerRB.velocity = new Vector3(speed, 0, 0);
+            transform.Translate(Vector3.forward * Time.deltaTime * speed, Space.Self);
             //use velocity start with velocity at zero and modify based on what they press.
             //use velocity to move player up as well. 
-        }
-        if (Input.GetKeyUp(KeyCode.W))
-        {
-            playerRB.velocity = Vector3.zero;
         }
         //Moves player backwards
         if (Input.GetKey(KeyCode.S))
         {
-            playerRB.velocity = new Vector3(-speed, 0, 0);
+            transform.Translate(Vector3.forward * Time.deltaTime * -speed, Space.Self);
         }
-        if (Input.GetKeyUp(KeyCode.S))
-        {
-            playerRB.velocity = Vector3.zero;
-        }
+        
         //Rotates player left
         if (Input.GetKey(KeyCode.A))
         {
-            transform.Rotate(Vector3.up * Time.deltaTime * turnSpeed, Space.Self);
+            transform.Rotate(Vector3.up * Time.deltaTime * -turnSpeed, Space.Self);
         }
         //Rotates player right
         if (Input.GetKey(KeyCode.D))
