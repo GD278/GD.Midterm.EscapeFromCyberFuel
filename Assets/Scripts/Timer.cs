@@ -34,7 +34,7 @@ public class Timer : MonoBehaviour
         if (timeron)
         {
             timer -= Time.deltaTime;
-            timerTextBox.text = $"{Mathf.Round(timer * 10) / 10f}";
+            timerTextBox.text = $"{timer.ToString("F2")}";
 
             if(timer <= 0)
             {
