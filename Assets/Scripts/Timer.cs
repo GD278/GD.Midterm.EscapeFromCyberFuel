@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class Timer : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] float timer;
+    [SerializeField] public float timer;
     [SerializeField] Text timerTextBox;
     [SerializeField] Text gameOverTextBox;
     [SerializeField] Text replayTextBox;

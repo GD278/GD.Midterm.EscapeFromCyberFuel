@@ -11,7 +11,7 @@ public class ScoreTracker : MonoBehaviour
     [SerializeField] Text youWinTextBox;
     [SerializeField] Text replayTextBox;
     PlayerController playerController;
-    Timer timer;
+    Timer timer1;
     public GameObject[] rings;
     bool triggered;
 
@@ -24,7 +24,7 @@ public class ScoreTracker : MonoBehaviour
         triggered = false;
         playerController = GetComponent<PlayerController>();
         instantiateRings = GetComponent<InstantiateRings>();
-        timer = GetComponent<Timer>();
+        timer1 = GetComponent<Timer>();
         replayTextBox.enabled = false;
         Debug.Log(getCurrentRing());
     }
@@ -37,7 +37,7 @@ public class ScoreTracker : MonoBehaviour
         {
             youWinTextBox.text = "You Win!";
             playerController.enabled = false;
-            timer.enabled = false;
+            timer1.enabled = false;
             replayTextBox.enabled = true;
             if (Input.GetKeyDown(KeyCode.R))
             {
@@ -49,6 +49,7 @@ public class ScoreTracker : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Hoop") && !triggered)
         {
+            timer1.timer++;
             triggered = true;
             Destroy(other.gameObject);
             Debug.Log("Hoop destroyed.");
