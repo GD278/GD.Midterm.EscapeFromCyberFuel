@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class ScoreTracker : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] Text ScoreTextBox;
+    //[SerializeField] Text ScoreTextBox;
     [SerializeField] Text youWinTextBox;
     [SerializeField] Text replayTextBox;
     PlayerController playerController;
@@ -25,7 +25,7 @@ public class ScoreTracker : MonoBehaviour
         playerController = GetComponent<PlayerController>();
         instantiateRings = GetComponent<InstantiateRings>();
         timer1 = GetComponent<Timer>();
-        replayTextBox.enabled = false;
+        //replayTextBox.enabled = false;
         Debug.Log(getCurrentRing());
     }
 
@@ -56,10 +56,10 @@ public class ScoreTracker : MonoBehaviour
             Debug.Log("You have entered the trigger.");
             i++;
             instantiateRings.RingInstantiate();
-            Debug.Log("Score added.");
+            //Debug.Log("Score added.");
             Destroy(other.gameObject);
             Debug.Log("Trigger destroyed.");
-            ScoreTextBox.text = $"Score: {i}";
+            //ScoreTextBox.text = $"Score: {i}";
         }
     }
 
