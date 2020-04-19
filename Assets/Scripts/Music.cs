@@ -10,13 +10,17 @@ public class Music : MonoBehaviour
     void Start()
     {
         source = GetComponent<AudioSource>();
-        source.clip = song;
-        source.Play();
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (!source.isPlaying)
+        {
+            source.clip = song;
+            source.loop = true;
+            source.Play();
+        }
     }
 }
