@@ -25,7 +25,7 @@ public class ScoreTracker : MonoBehaviour
         playerController = GetComponent<PlayerController>();
         instantiateRings = GetComponent<InstantiateRings>();
         timer1 = GetComponent<Timer>();
-        //replayTextBox.enabled = false;
+        replayTextBox.enabled = false;
         Debug.Log(getCurrentRing());
     }
 
