@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ButtonSound : MonoBehaviour
 {
+    //Comment just for the final build. 
     // Start is called before the first frame update
     private AudioSource source;
     [SerializeField] private AudioClip hoverOver;
